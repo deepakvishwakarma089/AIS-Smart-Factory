@@ -1,0 +1,187 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AISSmartFactory
+build_property.RootNamespace = AISSmartFactory
+build_property.ProjectDir = C:\Users\deepa\source\repos\AISSmartFactory\AISSmartFactory\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\deepa\source\repos\AISSmartFactory\AISSmartFactory
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncProduction/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZHVjdGlvblxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncProduction/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZHVjdGlvblxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncProduction/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZHVjdGlvblxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncProduction/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZHVjdGlvblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncPrograms/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZ3JhbXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncPrograms/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZ3JhbXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncPrograms/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZ3JhbXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncPrograms/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZ3JhbXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/CncPrograms/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ25jUHJvZ3JhbXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/DowntimeReasons/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93bnRpbWVSZWFzb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/DowntimeReasons/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93bnRpbWVSZWFzb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/DowntimeReasons/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93bnRpbWVSZWFzb25zXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/DowntimeReasons/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93bnRpbWVSZWFzb25zXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/DowntimeReasons/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG93bnRpbWVSZWFzb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/GlassTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2xhc3NUeXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/GlassTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2xhc3NUeXBlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/GlassTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2xhc3NUeXBlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/GlassTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2xhc3NUeXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/GlassTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2xhc3NUeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Machines/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Machines/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Machines/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Machines/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Machines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFjaGluZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Operators/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0b3JzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Operators/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0b3JzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Operators/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0b3JzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Operators/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0b3JzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Operators/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BlcmF0b3JzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Tools/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Tools/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Tools/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Tools/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Tools/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVG9vbHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/deepa/source/repos/AISSmartFactory/AISSmartFactory/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-hdsojiximl

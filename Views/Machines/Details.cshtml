@@ -1,0 +1,225 @@
+﻿@model AISSmartFactory.Models.Master.Machine
+
+@{
+    ViewData["Title"] = "Machine Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">Machine Details</h2>
+            <p class="text-muted">
+                @Model.MachineCode
+            </p>
+        </div>
+
+        <div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+                    @Model.MachineName
+                </strong>
+
+                @if (Model.IsOnline)
+                {
+                    <span class="badge bg-success">
+                        Online
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">
+                        Offline
+                    </span>
+                }
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Machine Code</strong>
+
+                    <div>
+                        @Model.MachineCode
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Machine Name</strong>
+
+                    <div>
+                        @Model.MachineName
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Machine Type</strong>
+
+                    <div>
+                        @Model.MachineType
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Manufacturer</strong>
+
+                    <div>
+                        @Model.Manufacturer
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Model</strong>
+
+                    <div>
+                        @Model.Model
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Controller</strong>
+
+                    <div>
+                        @Model.Controller
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Serial Number</strong>
+
+                    <div>
+                        @Model.SerialNumber
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Production Line</strong>
+
+                    <div>
+                        @Model.LineName
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Location</strong>
+
+                    <div>
+                        @Model.Location
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Communication Protocol</strong>
+
+                    <div>
+                        @Model.CommunicationProtocol
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>IP Address</strong>
+
+                    <div>
+                        @Model.IPAddress
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Port</strong>
+
+                    <div>
+                        @Model.Port
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 mb-3">
+
+                    <strong>Active</strong>
+
+                    <div>
+
+                        @if (Model.IsActive)
+                        {
+                            <span class="badge bg-success">
+                                Active
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger">
+                                Inactive
+                            </span>
+                        }
+
+                    </div>
+
+                </div>
+
+                <div class="col-12 mb-3">
+
+                    <strong>Description</strong>
+
+                    <div class="mt-1">
+                        @Model.Description
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

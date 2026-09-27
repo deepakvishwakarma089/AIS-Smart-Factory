@@ -1,0 +1,190 @@
+﻿@model IEnumerable<AISSmartFactory.Models.Production.CncProductionEntry>
+
+@{
+    ViewData["Title"] = "CNC Production";
+}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                CNC Production
+            </h2>
+
+            <p class="text-muted">
+                CNC production data collection
+            </p>
+
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+
+            + New Production Entry
+
+        </a>
+
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+
+            @TempData["Success"]
+
+        </div>
+    }
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Production No.</th>
+
+                            <th>Date</th>
+
+                            <th>Machine ID</th>
+
+                            <th>Operator ID</th>
+
+                            <th>Glass Type ID</th>
+
+                            <th>Produced</th>
+
+                            <th>Good</th>
+
+                            <th>Rejected</th>
+
+                            <th>Status</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    @if (!Model.Any())
+                    {
+                        <tr>
+
+                            <td colspan="10"
+                                class="text-center text-muted">
+
+                                No production records found.
+
+                            </td>
+
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <strong>
+                                        @item.ProductionNumber
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    @item.ProductionDate.ToString(
+                                        "dd-MM-yyyy")
+                                </td>
+
+                                <td>
+                                    @item.MachineId
+                                </td>
+
+                                <td>
+                                    @item.OperatorId
+                                </td>
+
+                                <td>
+                                    @item.GlassTypeId
+                                </td>
+
+                                <td>
+                                    @item.ProducedQuantity
+                                </td>
+
+                                <td>
+                                    <span class="text-success fw-bold">
+                                        @item.GoodQuantity
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="text-danger fw-bold">
+                                        @item.RejectedQuantity
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    @if (item.IsCompleted)
+                                    {
+                                        <span class="badge bg-success">
+                                            Completed
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            In Progress
+                                        </span>
+                                    }
+
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="Details"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-info">
+                                        View
+                                    </a>
+
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-primary">
+                                        Edit
+                                    </a>
+
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-danger">
+                                        Delete
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

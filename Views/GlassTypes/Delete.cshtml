@@ -1,0 +1,116 @@
+﻿@model AISSmartFactory.Models.Master.GlassType
+
+@{
+    ViewData["Title"] = "Deactivate Glass Type";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-danger">
+
+                <div class="card-header bg-danger text-white">
+
+                    <h4 class="mb-0">
+                        Deactivate Glass Type
+                    </h4>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="alert alert-warning">
+
+                        <strong>Warning:</strong>
+
+                        This will deactivate the glass type.
+                        Existing production records will not
+                        be deleted.
+
+                    </div>
+
+
+                    <dl class="row">
+
+                        <dt class="col-sm-4">
+                            Glass Code
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.GlassCode
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Glass Name
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.GlassName
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Category
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.GlassCategory
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Thickness
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Thickness mm
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Size
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Width × @Model.Length mm
+                        </dd>
+
+                    </dl>
+
+
+                    <form asp-action="Delete">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Deactivate Glass Type
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

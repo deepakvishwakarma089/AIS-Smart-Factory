@@ -1,0 +1,160 @@
+﻿@model IEnumerable<AISSmartFactory.Models.Master.DowntimeReason>
+
+@{
+    ViewData["Title"] = "Downtime Reasons";
+}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">
+                Downtime Reason Master
+            </h2>
+
+            <p class="text-muted">
+                Manage CNC downtime reasons
+            </p>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+            + Add Downtime Reason
+        </a>
+
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead class="table-dark">
+
+                        <tr>
+                            <th>Code</th>
+                            <th>Reason</th>
+                            <th>Category</th>
+                            <th>Planned</th>
+                            <th>Comment</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    @item.ReasonCode
+                                </strong>
+                            </td>
+
+                            <td>
+                                @item.ReasonName
+                            </td>
+
+                            <td>
+                                @item.Category
+                            </td>
+
+                            <td>
+                                @if (item.IsPlanned)
+                                {
+                                    <span class="badge bg-info">
+                                        Planned
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Unplanned
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (item.RequiresComment)
+                                {
+                                    <span class="badge bg-primary">
+                                        Required
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        No
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                @if (item.IsActive)
+                                {
+                                    <span class="badge bg-success">
+                                        Active
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Inactive
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-sm btn-info">
+                                    Details
+                                </a>
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Id"
+                                   class="btn btn-sm btn-primary">
+                                    Edit
+                                </a>
+
+                                @if (item.IsActive)
+                                {
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="btn btn-sm btn-danger">
+                                        Deactivate
+                                    </a>
+                                }
+
+                            </td>
+
+                        </tr>
+                    }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

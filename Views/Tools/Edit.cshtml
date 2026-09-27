@@ -1,0 +1,252 @@
+﻿@model AISSmartFactory.Models.Master.Tool
+
+@{
+    ViewData["Title"] = "Edit Tool";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="mb-0">
+                        Edit CNC Tool
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Edit">
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ToolCode"
+                                       class="form-label">
+                                    Tool Code
+                                </label>
+
+                                <input asp-for="ToolCode"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ToolName"
+                                       class="form-label">
+                                    Tool Name
+                                </label>
+
+                                <input asp-for="ToolName"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ToolType"
+                                       class="form-label">
+                                    Tool Type
+                                </label>
+
+                                <select asp-for="ToolType"
+                                        class="form-select">
+
+                                    <option value="Drill">Drill</option>
+                                    <option value="Grinding Wheel">
+                                        Grinding Wheel
+                                    </option>
+                                    <option value="Milling Cutter">
+                                        Milling Cutter
+                                    </option>
+                                    <option value="Router">
+                                        Router
+                                    </option>
+                                    <option value="Polishing Tool">
+                                        Polishing Tool
+                                    </option>
+                                    <option value="Cutter">
+                                        Cutter
+                                    </option>
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="ToolNumber"
+                                       class="form-label">
+                                    Tool Number
+                                </label>
+
+                                <input asp-for="ToolNumber"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Manufacturer"
+                                       class="form-label">
+                                    Manufacturer
+                                </label>
+
+                                <input asp-for="Manufacturer"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Specification"
+                                       class="form-label">
+                                    Specification
+                                </label>
+
+                                <input asp-for="Specification"
+                                       class="form-control" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Diameter"
+                                       class="form-label">
+                                    Diameter (mm)
+                                </label>
+
+                                <input asp-for="Diameter"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.001" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="Length"
+                                       class="form-label">
+                                    Length (mm)
+                                </label>
+
+                                <input asp-for="Length"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.001" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="MaximumRpm"
+                                       class="form-label">
+                                    Maximum RPM
+                                </label>
+
+                                <input asp-for="MaximumRpm"
+                                       class="form-control"
+                                       type="number" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="ExpectedLife"
+                                       class="form-label">
+                                    Expected Life
+                                </label>
+
+                                <input asp-for="ExpectedLife"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="CurrentLife"
+                                       class="form-label">
+                                    Current Life
+                                </label>
+
+                                <input asp-for="CurrentLife"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01" />
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="LifeUnit"
+                                       class="form-label">
+                                    Life Unit
+                                </label>
+
+                                <select asp-for="LifeUnit"
+                                        class="form-select">
+
+                                    <option value="Pieces">
+                                        Pieces
+                                    </option>
+
+                                    <option value="Hours">
+                                        Hours
+                                    </option>
+
+                                    <option value="Meters">
+                                        Meters
+                                    </option>
+
+                                    <option value="Cycles">
+                                        Cycles
+                                    </option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-12 mb-3">
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="IsActive"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsActive"
+                                           class="form-check-label">
+                                        Active Tool
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Update Tool
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

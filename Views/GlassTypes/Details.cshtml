@@ -1,0 +1,208 @@
+﻿@model AISSmartFactory.Models.Master.GlassType
+
+@{
+    ViewData["Title"] = "Glass Type Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                Glass Type Details
+            </h2>
+
+            <p class="text-muted mb-0">
+                @Model.GlassCode
+            </p>
+
+        </div>
+
+        <div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+                    @Model.GlassName
+                </strong>
+
+                @if (Model.IsActive)
+                {
+                    <span class="badge bg-success">
+                        Active
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">
+                        Inactive
+                    </span>
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Glass Code
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.GlassCode
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Glass Name
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.GlassName
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Category
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.GlassCategory
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Color
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.CoatingType
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+
+                    <strong>
+                        Thickness
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Thickness mm
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+
+                    <strong>
+                        Width
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Width mm
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 mb-4">
+
+                    <strong>
+                        Height
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Length mm
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-4">
+
+                    <strong>
+                        Description
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Description
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <strong>
+                        Created
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.CreatedAt.ToLocalTime()
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <strong>
+                        Last Updated
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.UpdatedAt.ToString()
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

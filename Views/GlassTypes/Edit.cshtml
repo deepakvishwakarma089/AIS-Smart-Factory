@@ -1,0 +1,302 @@
+﻿@model AISSmartFactory.Models.Master.GlassType
+
+@{
+    ViewData["Title"] = "Edit Glass Type";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4 class="mb-0">
+                        Edit Glass Type
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Edit">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="GlassCode"
+                                       class="form-label">
+                                    Glass Code
+                                </label>
+
+                                <input asp-for="GlassCode"
+                                       class="form-control" />
+
+                                <span asp-validation-for="GlassCode"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="GlassName"
+                                       class="form-label">
+                                    Glass Name
+                                </label>
+
+                                <input asp-for="GlassName"
+                                       class="form-control" />
+
+                                <span asp-validation-for="GlassName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="GlassCategory"
+                                       class="form-label">
+                                    Glass Category
+                                </label>
+
+                                <select asp-for="GlassCategory"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <option value="Clear">
+                                        Clear
+                                    </option>
+
+                                    <option value="Toughened">
+                                        Toughened
+                                    </option>
+
+                                    <option value="Laminated">
+                                        Laminated
+                                    </option>
+
+                                    <option value="Low-E">
+                                        Low-E
+                                    </option>
+
+                                    <option value="Reflective">
+                                        Reflective
+                                    </option>
+
+                                    <option value="Tinted">
+                                        Tinted
+                                    </option>
+
+                                    <option value="Insulated">
+                                        Insulated
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Thickness"
+                                       class="form-label">
+                                    Thickness
+                                </label>
+
+                                <div class="input-group">
+
+                                    <input asp-for="Thickness"
+                                           class="form-control"
+                                           type="number"
+                                           step="0.01" />
+
+                                    <span class="input-group-text">
+                                        mm
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Width"
+                                       class="form-label">
+                                    Width
+                                </label>
+
+                                <div class="input-group">
+
+                                    <input asp-for="Width"
+                                           class="form-control"
+                                           type="number"
+                                           step="0.01" />
+
+                                    <span class="input-group-text">
+                                        mm
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Length"
+                                       class="form-label">
+                                    Length
+                                </label>
+
+                                <div class="input-group">
+
+                                    <input asp-for="Length"
+                                           class="form-control"
+                                           type="number"
+                                           step="0.01" />
+
+                                    <span class="input-group-text">
+                                        mm
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="CoatingType"
+                                       class="form-label">
+                                    Color
+                                </label>
+
+                                <select asp-for="CoatingType"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Color
+                                    </option>
+
+                                    <option value="Clear">
+                                        Clear
+                                    </option>
+
+                                    <option value="Green">
+                                        Green
+                                    </option>
+
+                                    <option value="Blue">
+                                        Blue
+                                    </option>
+
+                                    <option value="Grey">
+                                        Grey
+                                    </option>
+
+                                    <option value="Bronze">
+                                        Bronze
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Status
+                                </label>
+
+                                <div class="form-check form-switch mt-2">
+
+                                    <input asp-for="IsActive"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsActive"
+                                           class="form-check-label">
+                                        Active Glass Type
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-12 mb-3">
+
+                                <label asp-for="Description"
+                                       class="form-label">
+                                    Description
+                                </label>
+
+                                <textarea asp-for="Description"
+                                          class="form-control"
+                                          rows="3">
+                                </textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Update Glass Type
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+
+}

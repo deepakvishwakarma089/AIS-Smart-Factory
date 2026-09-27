@@ -1,0 +1,186 @@
+﻿@model AISSmartFactory.Models.Master.Operator
+
+@{
+    ViewData["Title"] = "Operator Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                Operator Details
+            </h2>
+
+            <p class="text-muted mb-0">
+                @Model.EmployeeCode
+            </p>
+
+        </div>
+
+        <div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+
+                Edit
+
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+
+                Back
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+                    @Model.EmployeeName
+                </strong>
+
+                @if (Model.IsActive)
+                {
+                    <span class="badge bg-success">
+                        Active
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">
+                        Inactive
+                    </span>
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Employee Code
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.EmployeeCode
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Employee Name
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.EmployeeName
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Department
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Department
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Designation
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Designation
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Shift
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Shift
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Contact Number
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.ContactNumber
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Created
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.CreatedAt.ToLocalTime()
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Last Updated
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.UpdatedAt.ToString()
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

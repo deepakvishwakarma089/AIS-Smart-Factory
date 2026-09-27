@@ -1,0 +1,98 @@
+﻿@model AISSmartFactory.Models.Master.Tool
+
+@{
+    ViewData["Title"] = "Deactivate Tool";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-danger">
+
+                <div class="card-header bg-danger text-white">
+
+                    <h4 class="mb-0">
+                        Deactivate Tool
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="alert alert-warning">
+
+                        This will deactivate the tool.
+                        Existing production records will not
+                        be deleted.
+
+                    </div>
+
+                    <dl class="row">
+
+                        <dt class="col-sm-5">
+                            Tool Code
+                        </dt>
+
+                        <dd class="col-sm-7">
+                            @Model.ToolCode
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Tool Name
+                        </dt>
+
+                        <dd class="col-sm-7">
+                            @Model.ToolName
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Tool Type
+                        </dt>
+
+                        <dd class="col-sm-7">
+                            @Model.ToolType
+                        </dd>
+
+                        <dt class="col-sm-5">
+                            Current Life
+                        </dt>
+
+                        <dd class="col-sm-7">
+                            @Model.CurrentLife @Model.LifeUnit
+                        </dd>
+
+                    </dl>
+
+                    <form asp-action="Delete">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-danger">
+                                Deactivate Tool
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

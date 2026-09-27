@@ -1,0 +1,221 @@
+﻿@model AISSmartFactory.Models.Master.CncProgram
+
+@{
+    ViewData["Title"] = "CNC Program Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                CNC Program Details
+            </h2>
+
+            <p class="text-muted mb-0">
+                @Model.ProgramCode
+            </p>
+
+        </div>
+
+        <div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+                    @Model.ProgramName
+                </strong>
+
+                @if (Model.IsActive)
+                {
+                    <span class="badge bg-success">
+                        Active
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">
+                        Inactive
+                    </span>
+                }
+
+            </div>
+
+        </div>
+
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Program Code
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.ProgramCode
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Program Name
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.ProgramName
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Program Number
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.ProgramNumber
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Revision
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Revision
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        CNC Machine
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Machine?.MachineCode
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Glass Type
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.GlassType?.GlassCode
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Operation
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.OperationType
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-4">
+
+                    <strong>
+                        Target Cycle Time
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.TargetCycleTime seconds
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 mb-4">
+
+                    <strong>
+                        Description
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.Description
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <strong>
+                        Created
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.CreatedAt.ToLocalTime()
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <strong>
+                        Last Updated
+                    </strong>
+
+                    <div class="mt-1">
+                        @Model.UpdatedAt.ToLocalTime()
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

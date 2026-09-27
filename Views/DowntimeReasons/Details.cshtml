@@ -1,0 +1,100 @@
+﻿@model AISSmartFactory.Models.Master.DowntimeReason
+
+@{
+    ViewData["Title"] = "Downtime Reason Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+            Downtime Reason Details
+        </h2>
+
+        <div>
+
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <dl class="row">
+
+                <dt class="col-sm-4">
+                    Reason Code
+                </dt>
+
+                <dd class="col-sm-8">
+                    @Model.ReasonCode
+                </dd>
+
+                <dt class="col-sm-4">
+                    Reason Name
+                </dt>
+
+                <dd class="col-sm-8">
+                    @Model.ReasonName
+                </dd>
+
+                <dt class="col-sm-4">
+                    Category
+                </dt>
+
+                <dd class="col-sm-8">
+                    @Model.Category
+                </dd>
+
+                <dt class="col-sm-4">
+                    Description
+                </dt>
+
+                <dd class="col-sm-8">
+                    @Model.Description
+                </dd>
+
+                <dt class="col-sm-4">
+                    Planned
+                </dt>
+
+                <dd class="col-sm-8">
+                    @(Model.IsPlanned ? "Yes" : "No")
+                </dd>
+
+                <dt class="col-sm-4">
+                    Comment Required
+                </dt>
+
+                <dd class="col-sm-8">
+                    @(Model.RequiresComment ? "Yes" : "No")
+                </dd>
+
+                <dt class="col-sm-4">
+                    Status
+                </dt>
+
+                <dd class="col-sm-8">
+                    @(Model.IsActive ? "Active" : "Inactive")
+                </dd>
+
+            </dl>
+
+        </div>
+
+    </div>
+
+</div>

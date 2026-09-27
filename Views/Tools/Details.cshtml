@@ -1,0 +1,102 @@
+﻿@model AISSmartFactory.Models.Master.Tool
+
+@{
+    ViewData["Title"] = "Tool Details";
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">Tool Details</h2>
+
+            <p class="text-muted mb-0">
+                @Model.ToolCode
+            </p>
+        </div>
+
+        <div>
+            <a asp-action="Edit"
+               asp-route-id="@Model.Id"
+               class="btn btn-primary">
+                Edit
+            </a>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <dl class="row">
+
+                <dt class="col-sm-4">Tool Code</dt>
+                <dd class="col-sm-8">@Model.ToolCode</dd>
+
+                <dt class="col-sm-4">Tool Name</dt>
+                <dd class="col-sm-8">@Model.ToolName</dd>
+
+                <dt class="col-sm-4">Tool Type</dt>
+                <dd class="col-sm-8">@Model.ToolType</dd>
+
+                <dt class="col-sm-4">Tool Number</dt>
+                <dd class="col-sm-8">@Model.ToolNumber</dd>
+
+                <dt class="col-sm-4">Manufacturer</dt>
+                <dd class="col-sm-8">@Model.Manufacturer</dd>
+
+                <dt class="col-sm-4">Specification</dt>
+                <dd class="col-sm-8">@Model.Specification</dd>
+
+                <dt class="col-sm-4">Diameter</dt>
+                <dd class="col-sm-8">@Model.Diameter mm</dd>
+
+                <dt class="col-sm-4">Length</dt>
+                <dd class="col-sm-8">@Model.Length mm</dd>
+
+                <dt class="col-sm-4">Maximum RPM</dt>
+                <dd class="col-sm-8">@Model.MaximumRpm</dd>
+
+                <dt class="col-sm-4">Expected Life</dt>
+                <dd class="col-sm-8">
+                    @Model.ExpectedLife @Model.LifeUnit
+                </dd>
+
+                <dt class="col-sm-4">Current Life</dt>
+                <dd class="col-sm-8">
+                    @Model.CurrentLife @Model.LifeUnit
+                </dd>
+
+                <dt class="col-sm-4">Status</dt>
+
+                <dd class="col-sm-8">
+
+                    @if (Model.IsActive)
+                    {
+                        <span class="badge bg-success">
+                            Active
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">
+                            Inactive
+                        </span>
+                    }
+
+                </dd>
+
+            </dl>
+
+        </div>
+
+    </div>
+
+</div>

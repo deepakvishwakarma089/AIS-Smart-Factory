@@ -1,0 +1,216 @@
+﻿@model AISSmartFactory.Models.Master.DowntimeReason
+
+@{
+    ViewData["Title"] = "Edit Downtime Reason";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h4>
+                        Edit Downtime Reason
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="ReasonCode"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="ReasonCode"
+                                       class="form-control"
+                                       placeholder="DT-001" />
+
+                                <span asp-validation-for="ReasonCode"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="ReasonName"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="ReasonName"
+                                       class="form-control"
+                                       placeholder="Machine Breakdown" />
+
+                                <span asp-validation-for="ReasonName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Category"
+                                       class="form-label">
+                                </label>
+
+                                <select asp-for="Category"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <option>
+                                        Machine Breakdown
+                                    </option>
+
+                                    <option>
+                                        Tool
+                                    </option>
+
+                                    <option>
+                                        Maintenance
+                                    </option>
+
+                                    <option>
+                                        Material
+                                    </option>
+
+                                    <option>
+                                        Quality
+                                    </option>
+
+                                    <option>
+                                        Setup
+                                    </option>
+
+                                    <option>
+                                        Operator
+                                    </option>
+
+                                    <option>
+                                        Power
+                                    </option>
+
+                                    <option>
+                                        Safety
+                                    </option>
+
+                                    <option>
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Description"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Description"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="IsPlanned"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsPlanned"
+                                           class="form-check-label">
+                                        Planned
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="RequiresComment"
+                                           class="form-check-input" />
+
+                                    <label asp-for="RequiresComment"
+                                           class="form-check-label">
+                                        Comment Required
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="IsActive"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsActive"
+                                           class="form-check-label">
+                                        Active
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-3">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Update
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+}
+

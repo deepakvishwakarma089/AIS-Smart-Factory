@@ -1,0 +1,120 @@
+﻿@model AISSmartFactory.Models.Master.Operator
+
+@{
+    ViewData["Title"] = "Deactivate Operator";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-danger">
+
+                <div class="card-header bg-danger text-white">
+
+                    <h4 class="mb-0">
+                        Deactivate Operator
+                    </h4>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="alert alert-warning">
+
+                        <strong>Warning:</strong>
+
+                        This will deactivate the operator.
+                        Existing production records will not
+                        be deleted.
+
+                    </div>
+
+
+                    <dl class="row">
+
+                        <dt class="col-sm-4">
+                            Employee Code
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.EmployeeCode
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Employee Name
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.EmployeeName
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Department
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Department
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Designation
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Designation
+                        </dd>
+
+
+                        <dt class="col-sm-4">
+                            Shift
+                        </dt>
+
+                        <dd class="col-sm-8">
+                            @Model.Shift
+                        </dd>
+
+                    </dl>
+
+
+                    <form asp-action="Delete">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+
+                                Cancel
+
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-danger">
+
+                                Deactivate Operator
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

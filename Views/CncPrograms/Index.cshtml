@@ -1,0 +1,198 @@
+﻿@model IEnumerable<AISSmartFactory.Models.Master.CncProgram>
+
+@{
+    ViewData["Title"] = "CNC Program Master";
+}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold">
+                CNC Program Master
+            </h2>
+
+            <p class="text-muted mb-0">
+                Manage CNC programs used for glass processing
+            </p>
+        </div>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+
+            <i class="bi bi-plus-lg"></i>
+            Add CNC Program
+
+        </a>
+
+    </div>
+
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+
+            @TempData["Success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+    }
+
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                        <tr>
+
+                            <th>Program Code</th>
+
+                            <th>Program Name</th>
+
+                            <th>Program Number</th>
+
+                            <th>Machine</th>
+
+                            <th>Glass Type</th>
+
+                            <th>Operation</th>
+
+                            <th>Cycle Time</th>
+
+                            <th>Revision</th>
+
+                            <th>Status</th>
+
+                            <th class="text-end">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="10"
+                                    class="text-center text-muted py-4">
+
+                                    No CNC programs found.
+
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            @item.ProgramCode
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        @item.ProgramName
+                                    </td>
+
+                                    <td>
+                                        @item.ProgramNumber
+                                    </td>
+
+                                    <td>
+                                        @item.Machine?.MachineCode
+                                    </td>
+
+                                    <td>
+                                        @item.GlassType?.GlassCode
+                                    </td>
+
+                                    <td>
+                                        @item.OperationType
+                                    </td>
+
+                                    <td>
+                                        @item.TargetCycleTime sec
+                                    </td>
+
+                                    <td>
+                                        @item.Revision
+                                    </td>
+
+                                    <td>
+
+                                        @if (item.IsActive)
+                                        {
+                                            <span class="badge bg-success">
+                                                Active
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">
+                                                Inactive
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                    <td class="text-end">
+
+                                        <div class="btn-group">
+
+                                            <a asp-action="Details"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-outline-info">
+                                                Details
+                                            </a>
+
+                                            <a asp-action="Edit"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-outline-primary">
+                                                Edit
+                                            </a>
+
+                                            @if (item.IsActive)
+                                            {
+                                                <a asp-action="Delete"
+                                                   asp-route-id="@item.Id"
+                                                   class="btn btn-sm btn-outline-danger">
+                                                    Deactivate
+                                                </a>
+                                            }
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

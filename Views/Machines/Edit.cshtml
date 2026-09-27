@@ -1,0 +1,284 @@
+﻿@model AISSmartFactory.Models.Master.Machine
+
+@{
+    ViewData["Title"] = "Edit Machine";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Edit CNC Machine</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Edit">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="MachineCode"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="MachineCode"
+                                       class="form-control" />
+
+                                <span asp-validation-for="MachineCode"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="MachineName"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="MachineName"
+                                       class="form-control" />
+
+                                <span asp-validation-for="MachineName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="MachineType"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="MachineType"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Manufacturer"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Manufacturer"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Model"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Model"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Controller"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Controller"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="SerialNumber"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="SerialNumber"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="LineName"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="LineName"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Location"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Location"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="CommunicationProtocol"
+                                       class="form-label">
+                                </label>
+
+                                <select asp-for="CommunicationProtocol"
+                                        class="form-select">
+
+                                    <option value="">
+                                        Select Protocol
+                                    </option>
+
+                                    <option value="OPC UA">
+                                        OPC UA
+                                    </option>
+
+                                    <option value="Modbus TCP">
+                                        Modbus TCP
+                                    </option>
+
+                                    <option value="EtherNet/IP">
+                                        EtherNet/IP
+                                    </option>
+
+                                    <option value="MTConnect">
+                                        MTConnect
+                                    </option>
+
+                                    <option value="TCP/IP">
+                                        TCP/IP
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="IPAddress"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="IPAddress"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="Port"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="Port"
+                                       type="number"
+                                       class="form-control" />
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Machine Status
+                                </label>
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="IsOnline"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsOnline"
+                                           class="form-check-label">
+                                        Online
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label class="form-label">
+                                    Active
+                                </label>
+
+                                <div class="form-check form-switch">
+
+                                    <input asp-for="IsActive"
+                                           class="form-check-input" />
+
+                                    <label asp-for="IsActive"
+                                           class="form-check-label">
+                                        Active Machine
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 mb-3">
+
+                                <label asp-for="Description"
+                                       class="form-label">
+                                </label>
+
+                                <textarea asp-for="Description"
+                                          class="form-control"
+                                          rows="3">
+                                </textarea>
+
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2">
+
+                            <a asp-action="Index"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Update Machine
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,101 @@
+﻿@model AISSmartFactory.Models.Production.CncProductionEntry
+
+@{
+    ViewData["Title"] = "Delete Production";
+}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7">
+
+            <div class="card border-danger shadow">
+
+                <div class="card-header bg-danger text-white">
+
+                    <h4>
+                        Delete Production Record
+                    </h4>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="alert alert-danger">
+
+                        Are you sure you want to delete this
+                        production record?
+
+                    </div>
+
+                    <dl class="row">
+
+                        <dt class="col-sm-6">
+                            Production Number
+                        </dt>
+
+                        <dd class="col-sm-6">
+                            @Model.ProductionNumber
+                        </dd>
+
+                        <dt class="col-sm-6">
+                            Production Date
+                        </dt>
+
+                        <dd class="col-sm-6">
+                            @Model.ProductionDate
+                        </dd>
+
+                        <dt class="col-sm-6">
+                            Produced Quantity
+                        </dt>
+
+                        <dd class="col-sm-6">
+                            @Model.ProducedQuantity
+                        </dd>
+
+                        <dt class="col-sm-6">
+                            Good Quantity
+                        </dt>
+
+                        <dd class="col-sm-6">
+                            @Model.GoodQuantity
+                        </dd>
+
+                        <dt class="col-sm-6">
+                            Rejected Quantity
+                        </dt>
+
+                        <dd class="col-sm-6">
+                            @Model.RejectedQuantity
+                        </dd>
+
+                    </dl>
+
+                    <form asp-action="Delete">
+
+                        <input type="hidden"
+                               asp-for="Id" />
+
+                        <a asp-action="Index"
+                           class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-danger">
+                            Delete
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

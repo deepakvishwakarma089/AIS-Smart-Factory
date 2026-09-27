@@ -1,0 +1,450 @@
+﻿@model AISSmartFactory.Models.Production.CncProductionEntry
+
+@{
+    ViewData["Title"] = "New CNC Production Entry";
+}
+
+<div class="container-fluid">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-primary text-white">
+
+            <h4 class="mb-0">
+                CNC Production Data Entry
+            </h4>
+
+        </div>
+
+        <div class="card-body">
+
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+                <!-- ================================================= -->
+                <!-- BASIC INFORMATION -->
+                <!-- ================================================= -->
+
+                <h5 class="border-bottom pb-2">
+                    Basic Information
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="ProductionNumber"
+                               class="form-label">
+                            Production Number
+                        </label>
+
+                        <input asp-for="ProductionNumber"
+                               class="form-control"
+                               placeholder="PRD-001" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="ProductionDate"
+                               class="form-label">
+                            Production Date
+                        </label>
+
+                        <input asp-for="ProductionDate"
+                               type="datetime-local"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="StartTime"
+                               class="form-label">
+                            Start Time
+                        </label>
+
+                        <input asp-for="StartTime"
+                               type="datetime-local"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================= -->
+                <!-- MASTER REFERENCES -->
+                <!-- ================================================= -->
+
+                <h5 class="border-bottom pb-2 mt-4">
+                    Production Masters
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="MachineId"
+                               class="form-label">
+                            Machine ID
+                        </label>
+
+                        <input asp-for="MachineId"
+                               class="form-control"
+                               type="number" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="OperatorId"
+                               class="form-label">
+                            Operator ID
+                        </label>
+
+                        <input asp-for="OperatorId"
+                               class="form-control"
+                               type="number" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label asp-for="GlassTypeId"
+                               class="form-label">
+                            Glass Type ID
+                        </label>
+
+                        <input asp-for="GlassTypeId"
+                               class="form-control"
+                               type="number" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="CncProgramId"
+                               class="form-label">
+                            CNC Program ID
+                        </label>
+
+                        <input asp-for="CncProgramId"
+                               class="form-control"
+                               type="number" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label asp-for="ToolId"
+                               class="form-label">
+                            Tool ID
+                        </label>
+
+                        <input asp-for="ToolId"
+                               class="form-control"
+                               type="number" />
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================= -->
+                <!-- QUANTITY -->
+                <!-- ================================================= -->
+
+                <h5 class="border-bottom pb-2 mt-4">
+                    Production Quantity
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="PlannedQuantity"
+                               class="form-label">
+                            Planned Quantity
+                        </label>
+
+                        <input asp-for="PlannedQuantity"
+                               class="form-control"
+                               type="number"
+                               min="0" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="ProducedQuantity"
+                               class="form-label">
+                            Produced Quantity
+                        </label>
+
+                        <input asp-for="ProducedQuantity"
+                               class="form-control"
+                               type="number"
+                               min="0" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="GoodQuantity"
+                               class="form-label">
+                            Good Quantity
+                        </label>
+
+                        <input asp-for="GoodQuantity"
+                               class="form-control"
+                               type="number"
+                               min="0" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="RejectedQuantity"
+                               class="form-label">
+                            Rejected Quantity
+                        </label>
+
+                        <input asp-for="RejectedQuantity"
+                               class="form-control"
+                               type="number"
+                               min="0" />
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================= -->
+                <!-- PROCESS PARAMETERS -->
+                <!-- ================================================= -->
+
+                <h5 class="border-bottom pb-2 mt-4">
+                    CNC Process Parameters
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="CycleTimeSeconds"
+                               class="form-label">
+                            Cycle Time (sec)
+                        </label>
+
+                        <input asp-for="CycleTimeSeconds"
+                               class="form-control"
+                               type="number"
+                               step="0.01" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="SpindleRpm"
+                               class="form-label">
+                            Spindle RPM
+                        </label>
+
+                        <input asp-for="SpindleRpm"
+                               class="form-control"
+                               type="number"
+                               step="0.01" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="FeedRate"
+                               class="form-label">
+                            Feed Rate
+                        </label>
+
+                        <input asp-for="FeedRate"
+                               class="form-control"
+                               type="number"
+                               step="0.01" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="CuttingDepth"
+                               class="form-label">
+                            Cutting Depth
+                        </label>
+
+                        <input asp-for="CuttingDepth"
+                               class="form-control"
+                               type="number"
+                               step="0.001" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="CoolantPressure"
+                               class="form-label">
+                            Coolant Pressure
+                        </label>
+
+                        <input asp-for="CoolantPressure"
+                               class="form-control"
+                               type="number"
+                               step="0.01" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="AirPressure"
+                               class="form-label">
+                            Air Pressure
+                        </label>
+
+                        <input asp-for="AirPressure"
+                               class="form-control"
+                               type="number"
+                               step="0.01" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="MachineLoadPercent"
+                               class="form-label">
+                            Machine Load %
+                        </label>
+
+                        <input asp-for="MachineLoadPercent"
+                               class="form-control"
+                               type="number"
+                               step="0.01"
+                               min="0"
+                               max="100" />
+
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+
+                        <label asp-for="EnergyKwh"
+                               class="form-label">
+                            Energy (kWh)
+                        </label>
+
+                        <input asp-for="EnergyKwh"
+                               class="form-control"
+                               type="number"
+                               step="0.001" />
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================= -->
+                <!-- QUALITY -->
+                <!-- ================================================= -->
+
+                <h5 class="border-bottom pb-2 mt-4">
+                    Quality
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-3 mb-3">
+
+                        <div class="form-check form-switch">
+
+                            <input asp-for="QualityApproved"
+                                   class="form-check-input" />
+
+                            <label asp-for="QualityApproved"
+                                   class="form-check-label">
+                                Quality Approved
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-9 mb-3">
+
+                        <label asp-for="QualityRemarks"
+                               class="form-label">
+                            Quality Remarks
+                        </label>
+
+                        <textarea asp-for="QualityRemarks"
+                                  class="form-control"
+                                  rows="2">
+                        </textarea>
+
+                    </div>
+
+                    <div class="col-12 mb-3">
+
+                        <label asp-for="Remarks"
+                               class="form-label">
+                            Production Remarks
+                        </label>
+
+                        <textarea asp-for="Remarks"
+                                  class="form-control"
+                                  rows="3">
+                        </textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- ================================================= -->
+                <!-- STATUS -->
+                <!-- ================================================= -->
+
+                <div class="form-check form-switch mb-4">
+
+                    <input asp-for="IsCompleted"
+                           class="form-check-input" />
+
+                    <label asp-for="IsCompleted"
+                           class="form-check-label">
+                        Production Completed
+                    </label>
+
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+
+                    <a asp-action="Index"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Save Production Entry
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+
+}
