@@ -1,4 +1,6 @@
 ﻿```cshtml
+@using Microsoft.AspNetCore.Mvc.Rendering
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,15 +24,21 @@
 
     <style>
 
+        /* =====================================================
+                   GLOBAL
+                   ===================================================== */
+
         body {
             margin: 0;
             background-color: #f4f6f9;
             font-family: "Segoe UI", Arial, sans-serif;
+            color: #243b53;
         }
 
-        /* ===========================
-           TOP NAVBAR
-           =========================== */
+
+        /* =====================================================
+                   TOP NAVBAR
+                   ===================================================== */
 
         .ais-navbar {
             height: 64px;
@@ -44,157 +52,182 @@
             font-size: 21px;
             font-weight: 700;
             text-decoration: none;
+            line-height: 1.1;
         }
 
-        .ais-brand small {
-            display: block;
-            color: #9fb3c8;
-            font-size: 10px;
-            font-weight: 400;
-        }
+            .ais-brand small {
+                display: block;
+                color: #9fb3c8;
+                font-size: 10px;
+                font-weight: 400;
+                margin-top: 3px;
+            }
 
         .ais-clock {
             color: #d9e3ec;
             font-size: 13px;
+            white-space: nowrap;
         }
 
-        /* ===========================
-           SIDEBAR
-           =========================== */
+
+        /* =====================================================
+                   SIDEBAR
+                   ===================================================== */
 
         .ais-sidebar {
             position: fixed;
             top: 64px;
             left: 0;
             bottom: 0;
-
             width: 250px;
-
             background-color: #102a43;
-
             overflow-y: auto;
-
+            overflow-x: hidden;
             z-index: 1000;
+            padding-bottom: 30px;
+            scrollbar-width: thin;
+            scrollbar-color: #355b7d #102a43;
         }
+
+            .ais-sidebar::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .ais-sidebar::-webkit-scrollbar-track {
+                background: #102a43;
+            }
+
+            .ais-sidebar::-webkit-scrollbar-thumb {
+                background: #355b7d;
+                border-radius: 10px;
+            }
+
+
+        /* =====================================================
+                   MENU SECTION
+                   ===================================================== */
 
         .ais-menu-title {
             padding: 20px 18px 8px;
-
             color: #8fa9c1;
-
             font-size: 11px;
             font-weight: 700;
-
             text-transform: uppercase;
-
             letter-spacing: 1px;
         }
 
+
+        /* =====================================================
+                   MENU LINKS
+                   ===================================================== */
+
         .ais-menu-link {
             display: flex;
-
             align-items: center;
-
             gap: 10px;
-
             margin: 2px 10px;
-
             padding: 11px 14px;
-
             border-radius: 6px;
-
             color: #d7e2ec;
-
             text-decoration: none;
-
             font-size: 14px;
+            transition: all .15s ease;
         }
 
-        .ais-menu-link:hover {
-            background-color: #1c405f;
+            .ais-menu-link:hover {
+                background-color: #1c405f;
+                color: white;
+                transform: translateX(2px);
+            }
 
-            color: white;
-        }
+            .ais-menu-link.active {
+                background-color: #1677c8;
+                color: white;
+                font-weight: 600;
+                box-shadow: 0 2px 5px rgba(0,0,0,.15);
+            }
 
         .ais-menu-icon {
             width: 24px;
-
+            min-width: 24px;
             text-align: center;
-
             font-size: 16px;
         }
 
-        /* ===========================
-           MAIN CONTENT
-           =========================== */
+
+        /* =====================================================
+                   DISABLED MENU
+                   ===================================================== */
+
+        .ais-menu-disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
+
+            .ais-menu-disabled:hover {
+                background-color: transparent;
+                color: #d7e2ec;
+                transform: none;
+            }
+
+
+        /* =====================================================
+                   MAIN CONTENT
+                   ===================================================== */
 
         .ais-main {
             margin-left: 250px;
-
             padding-top: 64px;
-
             min-height: 100vh;
         }
 
         .ais-content {
             padding: 25px;
+            min-height: calc(100vh - 125px);
         }
 
-        /* ===========================
-           PAGE HEADER
-           =========================== */
+
+        /* =====================================================
+                   PAGE HEADER
+                   ===================================================== */
 
         .ais-page-header {
             margin-bottom: 20px;
-
             background: white;
-
             padding: 18px 22px;
-
             border-radius: 8px;
-
             box-shadow: 0 2px 6px rgba(0,0,0,.06);
         }
 
         .ais-page-title {
             margin: 0;
-
             color: #102a43;
-
             font-size: 24px;
-
             font-weight: 700;
         }
 
         .ais-page-subtitle {
             margin-top: 4px;
-
             color: #7b8794;
-
             font-size: 13px;
         }
 
-        /* ===========================
-           CARDS
-           =========================== */
+
+        /* =====================================================
+                   CARDS
+                   ===================================================== */
 
         .ais-card {
             background: white;
-
             border: 1px solid #e1e7ed;
-
             border-radius: 8px;
-
             box-shadow: 0 2px 6px rgba(0,0,0,.06);
         }
 
         .ais-card-header {
             padding: 15px 18px;
-
             border-bottom: 1px solid #e1e7ed;
-
             color: #102a43;
-
             font-weight: 700;
         }
 
@@ -202,39 +235,30 @@
             padding: 18px;
         }
 
-        /* ===========================
-           KPI CARDS
-           =========================== */
+
+        /* =====================================================
+                   KPI CARDS
+                   ===================================================== */
 
         .ais-kpi {
             background: white;
-
             padding: 18px;
-
             border-radius: 8px;
-
             border-left: 4px solid #1677c8;
-
             box-shadow: 0 2px 6px rgba(0,0,0,.06);
         }
 
         .ais-kpi-title {
             color: #7b8794;
-
             font-size: 12px;
-
             font-weight: 600;
-
             text-transform: uppercase;
         }
 
         .ais-kpi-value {
             margin-top: 5px;
-
             color: #102a43;
-
             font-size: 28px;
-
             font-weight: 700;
         }
 
@@ -250,115 +274,138 @@
             border-left-color: #dc3545;
         }
 
-        /* ===========================
-           TABLE
-           =========================== */
+
+        /* =====================================================
+                   TABLE
+                   ===================================================== */
 
         .ais-table {
             background: white;
-
             border-radius: 8px;
-
             overflow: hidden;
         }
 
-        .ais-table thead {
-            background-color: #102a43;
+            .ais-table thead {
+                background-color: #102a43;
+                color: white;
+            }
 
-            color: white;
-        }
+            .ais-table th {
+                padding: 12px;
+                font-size: 13px;
+                font-weight: 600;
+                white-space: nowrap;
+            }
 
-        .ais-table th {
-            padding: 12px;
+            .ais-table td {
+                padding: 11px 12px;
+                font-size: 13px;
+                vertical-align: middle;
+            }
 
-            font-size: 13px;
 
-            font-weight: 600;
-        }
-
-        .ais-table td {
-            padding: 11px 12px;
-
-            font-size: 13px;
-
-            vertical-align: middle;
-        }
-
-        /* ===========================
-           STATUS
-           =========================== */
+        /* =====================================================
+                   STATUS
+                   ===================================================== */
 
         .ais-status {
             display: inline-block;
-
             padding: 4px 9px;
-
             border-radius: 20px;
-
             font-size: 11px;
-
             font-weight: 600;
         }
 
         .ais-status-running {
             background-color: #d1fae5;
-
             color: #047857;
         }
 
         .ais-status-idle {
             background-color: #fef3c7;
-
             color: #92400e;
         }
 
         .ais-status-stopped {
             background-color: #fee2e2;
-
             color: #b91c1c;
         }
 
         .ais-status-maintenance {
             background-color: #dbeafe;
-
             color: #1d4ed8;
         }
 
-        /* ===========================
-           FOOTER
-           =========================== */
+
+        /* =====================================================
+                   BUTTONS
+                   ===================================================== */
+
+        .ais-btn-primary {
+            background-color: #1677c8;
+            border-color: #1677c8;
+            color: white;
+        }
+
+            .ais-btn-primary:hover {
+                background-color: #125fa3;
+                border-color: #125fa3;
+                color: white;
+            }
+
+
+        /* =====================================================
+                   FOOTER
+                   ===================================================== */
 
         .ais-footer {
             padding: 15px 25px;
-
             background-color: white;
-
             border-top: 1px solid #e1e7ed;
-
             color: #7b8794;
-
             font-size: 12px;
         }
 
-        /* ===========================
-           MOBILE
-           =========================== */
+
+        /* =====================================================
+                   MOBILE MENU BUTTON
+                   ===================================================== */
 
         .mobile-menu-button {
             display: none;
         }
 
+
+        /* =====================================================
+                   MOBILE OVERLAY
+                   ===================================================== */
+
+        .ais-sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,.35);
+            z-index: 999;
+        }
+
+
+        /* =====================================================
+                   RESPONSIVE
+                   ===================================================== */
+
         @@media (max-width: 991px) {
 
             .ais-sidebar {
                 transform: translateX(-100%);
-
                 transition: transform .2s ease;
             }
 
-            .ais-sidebar.show {
-                transform: translateX(0);
-            }
+                .ais-sidebar.show {
+                    transform: translateX(0);
+                }
 
             .ais-main {
                 margin-left: 0;
@@ -375,6 +422,35 @@
             .ais-clock {
                 display: none;
             }
+
+            .ais-sidebar-overlay.show {
+                display: block;
+            }
+        }
+
+
+        @@media (max-width: 575px) {
+
+            .ais-brand {
+                font-size: 17px;
+            }
+
+                .ais-brand small {
+                    font-size: 9px;
+                }
+
+            .ais-content {
+                padding: 10px;
+            }
+
+            .ais-footer {
+                padding: 12px 15px;
+            }
+
+                .ais-footer .d-flex {
+                    flex-direction: column;
+                    gap: 5px;
+                }
         }
 
     </style>
@@ -386,10 +462,9 @@
 
 <body>
 
-
-    <!-- ======================================
+    <!-- =====================================================
          TOP NAVBAR
-         ====================================== -->
+         ===================================================== -->
 
     <nav class="navbar ais-navbar fixed-top">
 
@@ -399,7 +474,8 @@
 
                 <button type="button"
                         class="btn btn-outline-light mobile-menu-button me-3"
-                        onclick="toggleSidebar()">
+                        onclick="toggleSidebar()"
+                        aria-label="Toggle navigation">
 
                     ☰
 
@@ -432,7 +508,8 @@
 
                     <button class="btn btn-outline-light btn-sm dropdown-toggle"
                             type="button"
-                            data-bs-toggle="dropdown">
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
 
                         Admin
 
@@ -447,26 +524,21 @@
                                asp-controller="Home"
                                asp-action="Index">
 
-                                Dashboard
+                                📊 Dashboard
 
                             </a>
 
                         </li>
-
 
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
 
-
                         <li>
 
-                            <a class="dropdown-item"
-                               href="#">
-
-                                Logout
-
-                            </a>
+                            <span class="dropdown-item-text text-muted">
+                                AIS Smart Factory
+                            </span>
 
                         </li>
 
@@ -481,15 +553,27 @@
     </nav>
 
 
-    <!-- ======================================
+    <!-- =====================================================
+         MOBILE OVERLAY
+         ===================================================== -->
+
+    <div id="aisSidebarOverlay"
+         class="ais-sidebar-overlay"
+         onclick="toggleSidebar()">
+    </div>
+
+
+    <!-- =====================================================
          SIDEBAR
-         ====================================== -->
+         ===================================================== -->
 
     <aside id="aisSidebar"
            class="ais-sidebar">
 
 
-        <!-- MAIN -->
+        <!-- =================================================
+             MAIN
+             ================================================= -->
 
         <div class="ais-menu-title">
             Main
@@ -500,16 +584,16 @@
            asp-controller="Home"
            asp-action="Index">
 
-            <span class="ais-menu-icon">
-                📊
-            </span>
+            <span class="ais-menu-icon">📊</span>
 
             Dashboard
 
         </a>
 
 
-        <!-- PRODUCTION -->
+        <!-- =================================================
+             PRODUCTION
+             ================================================= -->
 
         <div class="ais-menu-title">
             Production
@@ -520,9 +604,7 @@
            asp-controller="CncProduction"
            asp-action="Index">
 
-            <span class="ais-menu-icon">
-                ⚙️
-            </span>
+            <span class="ais-menu-icon">⚙️</span>
 
             CNC Production
 
@@ -530,30 +612,19 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="DowntimeReasons"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                ⏱️
-            </span>
+            <span class="ais-menu-icon">⏱️</span>
 
-            Downtime
-
-        </a>
-
-
-        <a class="ais-menu-link"
-           href="#">
-
-            <span class="ais-menu-icon">
-                ❌
-            </span>
-
-            Rejections
+            Machine Downtime
 
         </a>
 
 
-        <!-- MASTER DATA -->
+        <!-- =================================================
+             MASTER DATA
+             ================================================= -->
 
         <div class="ais-menu-title">
             Master Data
@@ -561,11 +632,10 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="Machines"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                🏭
-            </span>
+            <span class="ais-menu-icon">🏭</span>
 
             Machines
 
@@ -573,11 +643,10 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="Operators"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                👷
-            </span>
+            <span class="ais-menu-icon">👷</span>
 
             Operators
 
@@ -585,11 +654,10 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="GlassTypes"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                🪟
-            </span>
+            <span class="ais-menu-icon">🪟</span>
 
             Glass Types
 
@@ -597,11 +665,10 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="CncPrograms"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                💻
-            </span>
+            <span class="ais-menu-icon">💻</span>
 
             CNC Programs
 
@@ -609,11 +676,10 @@
 
 
         <a class="ais-menu-link"
-           href="#">
+           asp-controller="Tools"
+           asp-action="Index">
 
-            <span class="ais-menu-icon">
-                🔧
-            </span>
+            <span class="ais-menu-icon">🔧</span>
 
             Tools
 
@@ -624,126 +690,152 @@
            asp-controller="DowntimeReasons"
            asp-action="Index">
 
-            <span class="ais-menu-icon">
-                ⏸️
-            </span>
+            <span class="ais-menu-icon">⏸️</span>
 
             Downtime Reasons
 
         </a>
 
 
-        <!-- QUALITY -->
+        <!-- =================================================
+             QUALITY
+             ================================================= -->
 
         <div class="ais-menu-title">
             Quality
         </div>
 
 
+
         <a class="ais-menu-link"
-           href="#">
-
-            <span class="ais-menu-icon">
-                ✅
-            </span>
-
+           asp-controller="QualityInspections"
+           asp-action="Index">
+            <span class="ais-menu-icon">✅</span>
             Quality Inspection
-
         </a>
 
 
         <a class="ais-menu-link"
-           href="#">
-
-            <span class="ais-menu-icon">
-                📋
-            </span>
-
+           asp-controller="DefectTypes"
+           asp-action="Index">
+            <span class="ais-menu-icon">📋</span>
             Defect Master
+        </a>
+
+
+        <!-- =================================================
+             TOOLING
+             ================================================= -->
+
+        <div class="ais-menu-title">
+            Tooling
+        </div>
+
+<a class="ais-menu-link"
+   asp-controller="ToolUsages"
+   asp-action="Index">
+    <span class="ais-menu-icon">🔧</span>
+    Tool Usages
+    </a>
+
+        <!-- =================================================
+             MAINTENANCE
+             ================================================= -->
+
+        <div class="ais-menu-title">
+            Maintenance
+        </div>
+
+
+        <a class="ais-menu-link"
+           asp-controller="MaintenanceRecords"
+           asp-action="Index">
+
+            <span class="ais-menu-icon">🛠️</span>
+
+            Maintenance Records
 
         </a>
 
 
-        <!-- REPORTS -->
+        <!-- =================================================
+             REPORTS
+             ================================================= -->
 
         <div class="ais-menu-title">
             Reports
         </div>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="Production Report will be added next">
 
-            <span class="ais-menu-icon">
-                📈
-            </span>
+            <span class="ais-menu-icon">📈</span>
 
             Production Report
 
         </a>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="OEE Report will be added next">
 
-            <span class="ais-menu-icon">
-                📊
-            </span>
+            <span class="ais-menu-icon">📊</span>
 
             OEE Report
 
         </a>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="Export module will be added later">
 
-            <span class="ais-menu-icon">
-                📥
-            </span>
+            <span class="ais-menu-icon">📥</span>
 
             Export Data
 
         </a>
 
 
-        <!-- SYSTEM -->
+        <!-- =================================================
+             SYSTEM
+             ================================================= -->
 
         <div class="ais-menu-title">
             System
         </div>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="User management will be added later">
 
-            <span class="ais-menu-icon">
-                👤
-            </span>
+            <span class="ais-menu-icon">👤</span>
 
             Users
 
         </a>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="Role management will be added later">
 
-            <span class="ais-menu-icon">
-                🔐
-            </span>
+            <span class="ais-menu-icon">🔐</span>
 
             Roles & Permissions
 
         </a>
 
 
-        <a class="ais-menu-link"
-           href="#">
+        <a class="ais-menu-link ais-menu-disabled"
+           href="javascript:void(0)"
+           title="Audit log will be added later">
 
-            <span class="ais-menu-icon">
-                📝
-            </span>
+            <span class="ais-menu-icon">📝</span>
 
             Audit Log
 
@@ -752,9 +844,9 @@
     </aside>
 
 
-    <!-- ======================================
+    <!-- =====================================================
          MAIN CONTENT
-         ====================================== -->
+         ===================================================== -->
 
     <main class="ais-main">
 
@@ -765,7 +857,9 @@
         </div>
 
 
-        <!-- FOOTER -->
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
 
         <footer class="ais-footer">
 
@@ -786,9 +880,9 @@
     </main>
 
 
-    <!-- ======================================
+    <!-- =====================================================
          JAVASCRIPT
-         ====================================== -->
+         ===================================================== -->
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
@@ -801,15 +895,32 @@
 
     <script>
 
+        // =====================================================
+        // SIDEBAR
+        // =====================================================
+
         function toggleSidebar() {
 
             const sidebar =
                 document.getElementById("aisSidebar");
 
+            const overlay =
+                document.getElementById("aisSidebarOverlay");
+
+            if (!sidebar)
+                return;
+
             sidebar.classList.toggle("show");
 
+            if (overlay) {
+                overlay.classList.toggle("show");
+            }
         }
 
+
+        // =====================================================
+        // CLOCK
+        // =====================================================
 
         function updateClock() {
 
@@ -819,9 +930,7 @@
             if (!clock)
                 return;
 
-
             const now = new Date();
-
 
             clock.innerText =
                 now.toLocaleString(
@@ -832,10 +941,10 @@
                         year: "numeric",
                         hour: "2-digit",
                         minute: "2-digit",
-                        second: "2-digit"
+                        second: "2-digit",
+                        hour12: false
                     }
                 );
-
         }
 
 
@@ -846,15 +955,110 @@
             1000
         );
 
+
+        // =====================================================
+        // ACTIVE SIDEBAR MENU
+        // =====================================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const currentPath =
+                    window.location.pathname
+                        .toLowerCase();
+
+                const links =
+                    document.querySelectorAll(
+                        ".ais-menu-link"
+                    );
+
+                links.forEach(function (link) {
+
+                    const href =
+                        link.getAttribute("href");
+
+                    if (!href ||
+                        href === "#" ||
+                        href.startsWith("javascript:")) {
+                        return;
+                    }
+
+                    let linkPath = href;
+
+                    try {
+
+                        linkPath =
+                            new URL(
+                                href,
+                                window.location.origin
+                            ).pathname.toLowerCase();
+
+                    }
+                    catch {
+                        return;
+                    }
+
+                    if (
+                        linkPath !== "/" &&
+                        currentPath.startsWith(linkPath)
+                    ) {
+
+                        link.classList.add("active");
+                    }
+
+                });
+
+            }
+        );
+
+
+        // =====================================================
+        // CLOSE MOBILE SIDEBAR AFTER NAVIGATION
+        // =====================================================
+
+        document.querySelectorAll(
+            ".ais-menu-link:not(.ais-menu-disabled)"
+        ).forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    if (window.innerWidth <= 991) {
+
+                        const sidebar =
+                            document.getElementById(
+                                "aisSidebar"
+                            );
+
+                        const overlay =
+                            document.getElementById(
+                                "aisSidebarOverlay"
+                            );
+
+                        if (sidebar) {
+                            sidebar.classList.remove("show");
+                        }
+
+                        if (overlay) {
+                            overlay.classList.remove("show");
+                        }
+                    }
+                }
+            );
+
+        });
+
     </script>
 
 
     @await RenderSectionAsync(
         "Scripts",
         required: false
-    )
+        )
 
 </body>
 
-</html
-
+</html>
+```

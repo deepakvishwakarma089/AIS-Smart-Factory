@@ -210,11 +210,6 @@ namespace AISSmartFactory.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
@@ -228,17 +223,25 @@ namespace AISSmartFactory.Migrations
                     b.Property<bool>("IsPlanned")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Reason")
+                    b.Property<string>("ReasonCode")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ReasonName")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("RequiresComment")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Code")
+                    b.HasIndex("ReasonCode")
                         .IsUnique();
 
                     b.ToTable("DowntimeReasons", (string)null);
@@ -611,6 +614,102 @@ namespace AISSmartFactory.Migrations
                     b.HasIndex("Timestamp");
 
                     b.ToTable("CncProcessData", (string)null);
+                });
+
+            modelBuilder.Entity("AISSmartFactory.Models.Production.CncProductionEntry", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal?>("AirPressure")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("CncProgramId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal?>("CoolantPressure")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("CuttingDepth")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("CycleTimeSeconds")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("EndTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("EnergyKwh")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("FeedRate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("GlassTypeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("GoodQuantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("MachineId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal?>("MachineLoadPercent")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("OperatorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("PlannedQuantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProducedQuantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("ProductionDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProductionNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("QualityApproved")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("QualityRemarks")
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("RejectedQuantity")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Remarks")
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("SpindleRpm")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long?>("ToolId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CncProductionEntries");
                 });
 
             modelBuilder.Entity("AISSmartFactory.Models.Production.MachineAlarm", b =>

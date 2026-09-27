@@ -36,7 +36,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<DowntimeReason> DowntimeReasons => Set<DowntimeReason>();
 
-
+    public DbSet<CncProductionEntry> CncProductionEntries => Set<CncProductionEntry>();
     // =========================================================
     // PRODUCTION
     // =========================================================
@@ -354,30 +354,38 @@ public class ApplicationDbContext : DbContext
         // Downtime Reason
         // -----------------------------------------------------
 
-        modelBuilder.Entity<DowntimeReason>(entity =>
-        {
-            entity.ToTable("DowntimeReasons");
+      
+modelBuilder.Entity<DowntimeReason>(entity =>
+{
+    entity.ToTable("DowntimeReasons");
 
-            entity.HasKey(x => x.Id);
+    entity.HasKey(x => x.Id);
 
-            entity.Property(x => x.)
-                .IsRequired()
-                .HasMaxLength(50);
+    entity.Property(x => x.ReasonCode)
+        .IsRequired()
+        .HasMaxLength(50);
 
-            entity.Property(x => x.Reason)
-                .IsRequired()
-                .HasMaxLength(150);
+    entity.Property(x => x.ReasonName)
+        .IsRequired()
+        .HasMaxLength(150);
 
-            entity.Property(x => x.Category)
-                .IsRequired()
-                .HasMaxLength(100);
+    entity.Property(x => x.Category)
+        .IsRequired()
+        .HasMaxLength(100);
 
-            entity.Property(x => x.Description)
-                .HasMaxLength(500);
+    entity.Property(x => x.Description)
+        .HasMaxLength(500);
 
-            entity.HasIndex(x => x.Code)
-                .IsUnique();
-        });
+    entity.Property(x => x.IsPlanned)
+        .IsRequired();
+
+    entity.Property(x => x.RequiresComment)
+        .IsRequired();
+
+    entity.HasIndex(x => x.ReasonCode)
+        .IsUnique();
+});
+
     }
 
 

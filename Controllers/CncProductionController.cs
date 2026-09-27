@@ -1,7 +1,11 @@
-﻿using AISSmartFactory.Data;
+﻿
+using AISSmartFactory.Data;
 using AISSmartFactory.Models.Production;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AISSmartFactory.Controllers;
 
@@ -28,6 +32,7 @@ public class CncProductionController : Controller
         return View(records);
     }
 
+
     // ========================================================
     // DETAILS
     // ========================================================
@@ -37,9 +42,8 @@ public class CncProductionController : Controller
         if (id == null)
             return NotFound();
 
-        var record =
-            await _context.CncProductionEntries
-                .FirstOrDefaultAsync(x => x.Id == id);
+        var record = await _context.CncProductionEntries
+            .FirstOrDefaultAsync(x => x.Id == id);
 
         if (record == null)
             return NotFound();
@@ -47,63 +51,53 @@ public class CncProductionController : Controller
         return View(record);
     }
 
+
     // ========================================================
-    // CREATE
+    // CREATE - GET
     // ========================================================
 
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
+        var now = DateTime.Now;
+
         var model = new CncProductionEntry
         {
-            ProductionDate = DateTime.Now,
-            StartTime = DateTime.Now,
+            ProductionDate = now,
+            StartTime = now,
             PlannedQuantity = 0,
+            ProducedQuantity = 0,
+            GoodQuantity = 0,
+            RejectedQuantity = 0,
             QualityApproved = false,
             IsCompleted = false
         };
 
+        await LoadDropdownsAsync();
+
         return View(model);
     }
 
+
     // ========================================================
-    // CREATE POST
+    // CREATE - POST
     // ========================================================
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(
-        CncProductionEntry model)
+    public async Task<IActionResult> Create(CncProductionEntry model)
     {
-        if (model.GoodQuantity + model.RejectedQuantity
-            != model.ProducedQuantity)
-        {
-            ModelState.AddModelError(
-                nameof(model.ProducedQuantity),
-                "Produced quantity must equal Good + Rejected quantity.");
-        }
-
-        if (model.GoodQuantity < 0)
-        {
-            ModelState.AddModelError(
-                nameof(model.GoodQuantity),
-                "Good quantity cannot be negative.");
-        }
-
-        if (model.RejectedQuantity < 0)
-        {
-            ModelState.AddModelError(
-                nameof(model.RejectedQuantity),
-                "Rejected quantity cannot be negative.");
-        }
+        ValidateProductionQuantities(model);
 
         if (!ModelState.IsValid)
+        {
+            await LoadDropdownsAsync(model);
             return View(model);
+        }
 
         if (string.IsNullOrWhiteSpace(model.ProductionNumber))
         {
             model.ProductionNumber =
-                "PRD-" +
-                DateTime.Now.ToString("yyyyMMddHHmmss");
+                $"PRD-{DateTime.Now:yyyyMMddHHmmssfff}";
         }
 
         model.CreatedAt = DateTime.UtcNow;
@@ -119,8 +113,9 @@ public class CncProductionController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+
     // ========================================================
-    // EDIT
+    // EDIT - GET
     // ========================================================
 
     public async Task<IActionResult> Edit(long? id)
@@ -128,17 +123,20 @@ public class CncProductionController : Controller
         if (id == null)
             return NotFound();
 
-        var model =
-            await _context.CncProductionEntries.FindAsync(id);
+        var model = await _context.CncProductionEntries
+            .FindAsync(id);
 
         if (model == null)
             return NotFound();
 
+        await LoadDropdownsAsync(model);
+
         return View(model);
     }
 
+
     // ========================================================
-    // EDIT POST
+    // EDIT - POST
     // ========================================================
 
     [HttpPost]
@@ -150,22 +148,24 @@ public class CncProductionController : Controller
         if (id != model.Id)
             return NotFound();
 
-        if (model.GoodQuantity + model.RejectedQuantity
-            != model.ProducedQuantity)
-        {
-            ModelState.AddModelError(
-                nameof(model.ProducedQuantity),
-                "Produced quantity must equal Good + Rejected quantity.");
-        }
+        ValidateProductionQuantities(model);
 
         if (!ModelState.IsValid)
+        {
+            await LoadDropdownsAsync(model);
             return View(model);
+        }
 
-        var existing =
-            await _context.CncProductionEntries.FindAsync(id);
+        var existing = await _context.CncProductionEntries
+            .FindAsync(id);
 
         if (existing == null)
             return NotFound();
+
+
+        // ----------------------------------------------------
+        // BASIC INFORMATION
+        // ----------------------------------------------------
 
         existing.ProductionDate = model.ProductionDate;
         existing.StartTime = model.StartTime;
@@ -177,10 +177,20 @@ public class CncProductionController : Controller
         existing.CncProgramId = model.CncProgramId;
         existing.ToolId = model.ToolId;
 
+
+        // ----------------------------------------------------
+        // QUANTITY
+        // ----------------------------------------------------
+
         existing.PlannedQuantity = model.PlannedQuantity;
         existing.ProducedQuantity = model.ProducedQuantity;
         existing.GoodQuantity = model.GoodQuantity;
         existing.RejectedQuantity = model.RejectedQuantity;
+
+
+        // ----------------------------------------------------
+        // CNC PROCESS PARAMETERS
+        // ----------------------------------------------------
 
         existing.CycleTimeSeconds =
             model.CycleTimeSeconds;
@@ -206,11 +216,21 @@ public class CncProductionController : Controller
         existing.EnergyKwh =
             model.EnergyKwh;
 
+
+        // ----------------------------------------------------
+        // QUALITY
+        // ----------------------------------------------------
+
         existing.QualityApproved =
             model.QualityApproved;
 
         existing.QualityRemarks =
             model.QualityRemarks;
+
+
+        // ----------------------------------------------------
+        // STATUS
+        // ----------------------------------------------------
 
         existing.Remarks =
             model.Remarks;
@@ -221,6 +241,7 @@ public class CncProductionController : Controller
         existing.UpdatedAt =
             DateTime.UtcNow;
 
+
         await _context.SaveChangesAsync();
 
         TempData["Success"] =
@@ -229,8 +250,9 @@ public class CncProductionController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+
     // ========================================================
-    // DELETE
+    // DELETE - GET
     // ========================================================
 
     public async Task<IActionResult> Delete(long? id)
@@ -238,9 +260,8 @@ public class CncProductionController : Controller
         if (id == null)
             return NotFound();
 
-        var record =
-            await _context.CncProductionEntries
-                .FirstOrDefaultAsync(x => x.Id == id);
+        var record = await _context.CncProductionEntries
+            .FirstOrDefaultAsync(x => x.Id == id);
 
         if (record == null)
             return NotFound();
@@ -248,12 +269,17 @@ public class CncProductionController : Controller
         return View(record);
     }
 
+
+    // ========================================================
+    // DELETE - POST
+    // ========================================================
+
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(long id)
     {
-        var record =
-            await _context.CncProductionEntries.FindAsync(id);
+        var record = await _context.CncProductionEntries
+            .FindAsync(id);
 
         if (record == null)
             return NotFound();
@@ -266,5 +292,145 @@ public class CncProductionController : Controller
             "Production entry deleted successfully.";
 
         return RedirectToAction(nameof(Index));
+    }
+
+
+    // ========================================================
+    // VALIDATION
+    // ========================================================
+
+    private void ValidateProductionQuantities(
+        CncProductionEntry model)
+    {
+        if (model.PlannedQuantity < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.PlannedQuantity),
+                "Planned quantity cannot be negative.");
+        }
+
+        if (model.ProducedQuantity < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.ProducedQuantity),
+                "Produced quantity cannot be negative.");
+        }
+
+        if (model.GoodQuantity < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.GoodQuantity),
+                "Good quantity cannot be negative.");
+        }
+
+        if (model.RejectedQuantity < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.RejectedQuantity),
+                "Rejected quantity cannot be negative.");
+        }
+
+        if (model.GoodQuantity + model.RejectedQuantity
+            != model.ProducedQuantity)
+        {
+            ModelState.AddModelError(
+                nameof(model.ProducedQuantity),
+                "Produced quantity must equal Good + Rejected quantity.");
+        }
+
+        if (model.EndTime.HasValue &&
+            model.EndTime.Value < model.StartTime)
+        {
+            ModelState.AddModelError(
+                nameof(model.EndTime),
+                "End time cannot be earlier than start time.");
+        }
+
+        if (model.CycleTimeSeconds.HasValue &&
+            model.CycleTimeSeconds.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.CycleTimeSeconds),
+                "Cycle time cannot be negative.");
+        }
+
+        if (model.SpindleRpm.HasValue &&
+            model.SpindleRpm.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.SpindleRpm),
+                "Spindle RPM cannot be negative.");
+        }
+
+        if (model.FeedRate.HasValue &&
+            model.FeedRate.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.FeedRate),
+                "Feed rate cannot be negative.");
+        }
+
+        if (model.CuttingDepth.HasValue &&
+            model.CuttingDepth.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.CuttingDepth),
+                "Cutting depth cannot be negative.");
+        }
+
+        if (model.CoolantPressure.HasValue &&
+            model.CoolantPressure.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.CoolantPressure),
+                "Coolant pressure cannot be negative.");
+        }
+
+        if (model.AirPressure.HasValue &&
+            model.AirPressure.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.AirPressure),
+                "Air pressure cannot be negative.");
+        }
+
+        if (model.MachineLoadPercent.HasValue &&
+            (model.MachineLoadPercent.Value < 0 ||
+             model.MachineLoadPercent.Value > 100))
+        {
+            ModelState.AddModelError(
+                nameof(model.MachineLoadPercent),
+                "Machine load must be between 0 and 100 percent.");
+        }
+
+        if (model.EnergyKwh.HasValue &&
+            model.EnergyKwh.Value < 0)
+        {
+            ModelState.AddModelError(
+                nameof(model.EnergyKwh),
+                "Energy consumption cannot be negative.");
+        }
+    }
+
+
+    // ========================================================
+    // DROPDOWNS
+    // ========================================================
+
+    private async Task LoadDropdownsAsync(
+        CncProductionEntry? model = null)
+    {
+        /*
+         * We will populate these once the exact foreign-key
+         * properties of CncProductionEntry are confirmed.
+         *
+         * ViewBag.Machines
+         * ViewBag.Operators
+         * ViewBag.GlassTypes
+         * ViewBag.CncPrograms
+         * ViewBag.Tools
+         */
+
+        await Task.CompletedTask;
     }
 }
