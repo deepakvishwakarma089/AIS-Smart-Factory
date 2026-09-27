@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AISSmartFactory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+700a77e1dfb09983d30eff7e7a6c5690fcde01a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23df98fc928a76d36fee11a4d00e1ffe17375dcf")]
 [assembly: System.Reflection.AssemblyProductAttribute("AISSmartFactory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AISSmartFactory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
